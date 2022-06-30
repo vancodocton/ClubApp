@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "ClubApp.Backend": {
+    "ClubApp.Backend Development": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -26,6 +26,13 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "ClubApp.Backend Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:8000",
+      "dotnetRunMessages": true
     }
   }
 }
