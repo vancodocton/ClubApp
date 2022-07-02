@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - feature/create-backend
+    paths:
+    - src/Client/**
+    - .github/workflows/azure-static-web-apps-icy-tree-019f2b100.yml
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
