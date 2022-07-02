@@ -59,6 +59,15 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error");
+
+    if (app.Environment.IsStaging())
+    {
+        using (var context = app.Services.CreateScope()
+            .ServiceProvider.GetRequiredService<ApplicationDbContext>())
+        {
+            context.Database.Migrate();
+        }
+    }
 }
 
 app.UseHttpsRedirection();
