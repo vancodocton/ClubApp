@@ -19,6 +19,16 @@
       "applicationUrl": "https://localhost:8000",
       "dotnetRunMessages": true
     },
+    "ClubApp.Backend Stagging": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Stagging"
+      },
+      "applicationUrl": "https://localhost:8000",
+      "dotnetRunMessages": true
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -26,13 +36,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "ClubApp.Backend Production": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:8000",
-      "dotnetRunMessages": true
     }
   }
 }
