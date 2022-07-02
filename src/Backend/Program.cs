@@ -37,6 +37,7 @@ var reactClient = ClientBuilder.SPA("ClubApp.Application")
     .WithRedirectUri($"{reactClientDomain}/authentication/login-callback")
     .WithLogoutRedirectUri($"{reactClientDomain}/authentication/logout-callback")
     .AllowOfflineAccess()
+    .WithCorsOrigins(reactClientDomain)
     .Build();
 
 builder.Services.AddIdentityServer()

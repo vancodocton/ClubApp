@@ -13,6 +13,16 @@ namespace ClubApp.Backend
             client.AllowedScopes.Add(IdentityServerConstants.StandardScopes.OfflineAccess);
 
             return new ClientBuilder(client);
+        }        
+        
+        public static ClientBuilder WithCorsOrigins(this ClientBuilder builder, params string[] origins)
+        {
+            var client = builder.Build();
+
+            foreach (var origin in origins)
+                client.AllowedCorsOrigins.Add(origin);
+
+            return new ClientBuilder(client);
         }
     }
 }
