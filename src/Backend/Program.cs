@@ -1,3 +1,4 @@
+using ClubApp.Backend;
 using ClubApp.Backend.Data;
 using ClubApp.Backend.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
@@ -29,24 +30,19 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultUI();
 
-var clientBuilder = new ClientBuilder();
+string reactClientDomain = builder.Configuration["HostingDomains:ReactClient"]
+    ?? throw new ArgumentNullException("reactClientDomain", " Hosting Domain of React Client is null");
 
-var a = new ClientBuilder().WithClientId("ClubApp.Application")
-    .WithApplicationProfile(ApplicationProfiles.SPA)
-    .WithRedirectUri("https://localhost:3000/authentication/login-callback")
-    .WithLogoutRedirectUri("https://localhost:3000/authentication/logout-callback")
-    .WithScopes("BackendApi", "openid", "profile")
-    .WithoutClientSecrets()
+var reactClient = ClientBuilder.SPA("ClubApp.Application")
+    .WithRedirectUri($"{reactClientDomain}/authentication/login-callback")
+    .WithLogoutRedirectUri($"{reactClientDomain}/authentication/logout-callback")
+    .AllowOfflineAccess()
     .Build();
 
 builder.Services.AddIdentityServer()
     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
     {
-        options.Clients.AddSPA("ClubApp.Application", options =>
-            options.WithRedirectUri("https://localhost:3000/authentication/login-callback")
-            .WithLogoutRedirectUri("https://localhost:3000/authentication/logout-callback")
-            .WithScopes("openid", "profile")
-            .WithoutClientSecrets());
+        options.Clients.Add(reactClient);
     });
 
 builder.Services.AddAuthentication()
@@ -59,6 +55,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
 }
 
 app.UseHttpsRedirection();
