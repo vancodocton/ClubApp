@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>ClubApp.Backend</RootNamespace>
+		<UserSecretsId>42b9100f-28ba-42ff-93e2-f01d1ecd4675</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
