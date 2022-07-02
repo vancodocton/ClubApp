@@ -18,6 +18,7 @@ module.exports = function(app) {
   const appProxy = createProxyMiddleware(context, {
     target: target,
     secure: false,
+    changeOrigin: env.changeOrigin ? env.changeOrigin : false,
     headers: {
       Connection: 'Keep-Alive'
     }
