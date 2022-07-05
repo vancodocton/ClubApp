@@ -1,7 +1,6 @@
-using ClubApp.Backend;
 using ClubApp.Backend.Data;
 using ClubApp.Backend.Models;
-using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using ClubApp.Backend.Options;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -30,20 +29,13 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultUI();
 
-string reactClientDomain = builder.Configuration["HostingDomains:ReactClient"]
-    ?? throw new ArgumentNullException("reactClientDomain", " Hosting Domain of React Client is null");
-
-var reactClient = ClientBuilder.SPA("ClubApp.Application")
-    .WithRedirectUri($"{reactClientDomain}/authentication/login-callback")
-    .WithLogoutRedirectUri($"{reactClientDomain}/authentication/logout-callback")
-    .AllowOfflineAccess()
-    .WithCorsOrigins(reactClientDomain)
-    .Build();
+IdentityServerConfig.ReactClientOrigins = builder.Configuration.GetSection("Origins:ReactClient").Get<string[]>()
+    ?? throw new ArgumentNullException("reactClientDomain", "React Client Origin is null");
 
 builder.Services.AddIdentityServer()
     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
     {
-        options.Clients.Add(reactClient);
+        options.Clients.AddRange(IdentityServerConfig.Clients.ToArray());
     });
 
 builder.Services.AddAuthentication()
