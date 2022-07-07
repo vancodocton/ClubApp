@@ -35,7 +35,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '$env.NODEJS_VERSION'
+          node-version: ${{ env.NODEJS_VERSION }}
 
       - name: npm install, build, and test
         run: |
@@ -46,8 +46,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: '$env.AZURE_WEBAPP_NAME'
-          path: '$env.AZURE_WEBAPP_PACKAGE_PATH'
+          name: ${{ env.AZURE_WEBAPP_NAME }}
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           if-no-files-found: error
 
   deploy:
@@ -61,7 +61,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: '$env.AZURE_WEBAPP_NAME'
+          name: ${{ env.AZURE_WEBAPP_NAME }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
