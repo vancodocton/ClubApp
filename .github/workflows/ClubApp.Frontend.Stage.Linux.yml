@@ -11,15 +11,15 @@ on:
     branches:
     - stage
     paths:
-    - src/Backend/**
-    - .github/workflows/ClubApp.Backend.Stagging.yml
+    - src/Client/**
+    - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
   pull_request:
     types:
     - ready_for_review
     - reopened
     paths:
-    - src/Backend/**
-    - .github/workflows/ClubApp.Frontend.Stage.Linux
+    - src/Client/**
+    - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
   workflow_dispatch:
 env:
   AZURE_WEBAPP_NAME: ClubAppReactClientStage
