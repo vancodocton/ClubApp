@@ -12,7 +12,9 @@ on:
     - reopened
     paths:
     - src/Backend/**
-    - .github/workflows/ClubApp.Backend.Stagging.yml
+    - .github/workflows/ClubApp.Backend.Stage.Linux.yml
+  workflow_dispatch:
+
 env:
   AZURE_WEBAPP_NAME: ClubAppBackendStage
   AZURE_WEBAPP_PACKAGE_PATH: src/Backend/publish
