@@ -1,5 +1,4 @@
-using ClubApp.Backend.Data;
-using ClubApp.Backend.Models;
+using ClubApp.Backend.Infrastructure.Identity;
 using ClubApp.Backend.Options;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -26,14 +25,14 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Stores.MaxLengthForKeys = 128;
 })
     .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultUI();
 
 IdentityServerConfig.ReactClientOrigins = builder.Configuration.GetSection("Origins:ReactClient").Get<string[]>()
     ?? throw new ArgumentNullException("reactClientDomain", "React Client Origin is null");
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
+    .AddApiAuthorization<ApplicationUser, AppIdentityDbContext>(options =>
     {
         options.Clients.AddRange(IdentityServerConfig.Clients.ToArray());
     });
