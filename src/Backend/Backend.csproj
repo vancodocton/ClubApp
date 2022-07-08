@@ -20,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj" />
 	  <ProjectReference Include="..\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj" />
 	  <ProjectReference Include="..\Backend.Infrastructure\Backend.Infrastructure.csproj" />
 	</ItemGroup>

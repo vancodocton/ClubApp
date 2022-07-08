@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infrastructure", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infrastructure.Sqlite", "src\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj", "{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infrastructure.Postgre", "src\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj", "{160050F6-A248-4610-A1CD-DB48F310A50E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160050F6-A248-4610-A1CD-DB48F310A50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160050F6-A248-4610-A1CD-DB48F310A50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160050F6-A248-4610-A1CD-DB48F310A50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160050F6-A248-4610-A1CD-DB48F310A50E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{7E89ED0B-98E7-4111-82D4-A33B6F3FE83B} = {5AD11ABE-E8EA-4B6F-91C3-0D0B276BBB01}
 		{63235E3B-1C66-4FBE-B968-3C72B481138D} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
 		{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
+		{160050F6-A248-4610-A1CD-DB48F310A50E} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3F91A85-AC6B-4703-8F95-42E5851AD8B5}

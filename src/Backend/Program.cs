@@ -19,12 +19,12 @@ string dbProvider = builder.Configuration.GetValue("DatabaseProvider", "Sqlite")
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 {
-
     _ = dbProvider switch
     {
         "Sqlite" => options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection"),
             x => x.MigrationsAssembly("Backend.Infrastructure.Sqlite")),
-        "Postgre" => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")),
+        "Postgre" => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection"),
+            x => x.MigrationsAssembly("Backend.Infrastructure.Postgre")),
         _ => throw new Exception($"Unsupported database provider: {dbProvider}")
     };
 });
