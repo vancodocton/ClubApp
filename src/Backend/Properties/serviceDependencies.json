@@ -4,6 +4,11 @@
       "type": "appInsights",
       "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
       "dynamicId": null
+    },
+    "sqlite1": {
+      "type": "sqlite",
+      "connectionId": "ConnectionStrings:SqliteConnection",
+      "dynamicId": null
     }
   }
 }
