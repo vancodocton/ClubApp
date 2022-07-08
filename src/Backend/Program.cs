@@ -14,9 +14,19 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+string dbProvider = builder.Configuration.GetValue("DatabaseProvider", "Sqlite")
+    ?? throw new ArgumentNullException(nameof(dbProvider), "Database provider is not configured.");
+
+builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+{
+
+    _ = dbProvider switch
+    {
+        "Sqlite" => options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")),
+        "Postgre" => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection")),
+        _ => throw new Exception($"Unsupported database provider: {dbProvider}")
+    };
+});
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -55,11 +65,9 @@ else
 
     if (app.Environment.IsStaging())
     {
-        using (var context = app.Services.CreateScope()
-            .ServiceProvider.GetService<ApplicationDbContext>())
-        {
-            context?.Database.Migrate();
-        }
+        using var context = app.Services.CreateScope().ServiceProvider
+            .GetRequiredService<AppIdentityDbContext>();
+        context.Database.Migrate();
     }
 }
 
