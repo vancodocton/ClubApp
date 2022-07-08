@@ -26,12 +26,12 @@ namespace ClubApp.Backend.Options
             return new ClientBuilder(client);
         }
 
-        public static ClientBuilder WithClientSecret(this ClientBuilder builder, string secret)
+        public static ClientBuilder WithClientSecret(this ClientBuilder builder, string hashedSecret)
         {
             var client = builder.Build();
 
             client.RequireClientSecret = true;
-            client.ClientSecrets.Add(new Secret(secret.Sha256()));
+            client.ClientSecrets.Add(new Secret(hashedSecret));
 
             return new ClientBuilder(client);
         }
