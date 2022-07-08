@@ -40,25 +40,26 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
+builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseExceptionHandler("/Error");
 }
 else
 {
-    app.UseExceptionHandler("/Error");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 
     if (app.Environment.IsStaging())
     {
         using (var context = app.Services.CreateScope()
-            .ServiceProvider.GetRequiredService<ApplicationDbContext>())
+            .ServiceProvider.GetService<ApplicationDbContext>())
         {
-            context.Database.Migrate();
+            context?.Database.Migrate();
         }
     }
 }

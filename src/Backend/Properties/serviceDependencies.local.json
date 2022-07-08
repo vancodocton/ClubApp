@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "type": "appInsights.sdk",
+      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+      "dynamicId": null
+    }
+  }
+}

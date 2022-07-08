@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\azure-static-web-apps-icy-tree-019f2b100.yml = .github\workflows\azure-static-web-apps-icy-tree-019f2b100.yml
 		.github\workflows\ClubApp.Backend.Stage.Linux.yml = .github\workflows\ClubApp.Backend.Stage.Linux.yml
 		.github\workflows\ClubApp.Backend.Stagging.yml = .github\workflows\ClubApp.Backend.Stagging.yml
+		.github\workflows\ClubApp.Frontend.Stage.Linux.yml = .github\workflows\ClubApp.Frontend.Stage.Linux.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5AD11ABE-E8EA-4B6F-91C3-0D0B276BBB01}"
