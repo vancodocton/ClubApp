@@ -64,7 +64,7 @@ else
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    if (app.Environment.IsStaging())
+    if (app.Environment.IsDevelopment())
     {
         using var context = app.Services.CreateScope().ServiceProvider
             .GetRequiredService<AppIdentityDbContext>();
