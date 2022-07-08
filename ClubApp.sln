@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5AD11ABE-E8EA-4B6F-91C3-0D0B276BBB01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infrastructure", "src\Backend.Infrastructure\Backend.Infrastructure.csproj", "{63235E3B-1C66-4FBE-B968-3C72B481138D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{E4C99712-D958-45FE-9979-FA319A79C28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4C99712-D958-45FE-9979-FA319A79C28E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4C99712-D958-45FE-9979-FA319A79C28E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{63235E3B-1C66-4FBE-B968-3C72B481138D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63235E3B-1C66-4FBE-B968-3C72B481138D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63235E3B-1C66-4FBE-B968-3C72B481138D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63235E3B-1C66-4FBE-B968-3C72B481138D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{6C6D6137-237A-47BA-AF19-C32802D53D03} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
 		{E4C99712-D958-45FE-9979-FA319A79C28E} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
 		{7E89ED0B-98E7-4111-82D4-A33B6F3FE83B} = {5AD11ABE-E8EA-4B6F-91C3-0D0B276BBB01}
+		{63235E3B-1C66-4FBE-B968-3C72B481138D} = {41EF6A7A-7055-4B17-9B1C-E1A3E3241E34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3F91A85-AC6B-4703-8F95-42E5851AD8B5}
