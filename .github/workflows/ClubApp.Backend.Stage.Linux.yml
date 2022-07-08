@@ -1,11 +1,11 @@
-name: Build and deploy ClubApp Backend on Linux
+name: Build and deploy Backend on Linux
 on:
   push:
     branches:
     - stage
     paths:
     - src/Backend/**
-    - .github/workflows/ClubApp.Backend.Stagging.yml
+    - .github/workflows/ClubApp.Backend.Stage.Linux.yml
   pull_request:
     types:
     - ready_for_review
