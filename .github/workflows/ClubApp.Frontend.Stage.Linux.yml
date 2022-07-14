@@ -1,10 +1,10 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
-name: Build and deploy ClubApp Frontend  React Client on Node.js Linux
+name: Build and deploy Frontend React Client on Node.js Linux
 
 defaults:
   run:
-    working-directory: "src/Client/"
+    working-directory: "./src/Client/"
 
 on:
   push:
@@ -16,15 +16,15 @@ on:
   pull_request:
     types:
     - ready_for_review
+    - ready_for_review
+    - opened
+    - synchronize
     - reopened
     paths:
     - src/Client/**
     - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
   workflow_dispatch:
-env:
-  AZURE_WEBAPP_NAME: ClubAppReactClientStage
-  AZURE_WEBAPP_PACKAGE_PATH: src/Client/build
-  NODEJS_VERSION: 16.x
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ env.NODEJS_VERSION }}
+          node-version: '16.x'
 
       - name: npm install, build, and test
         run: |
@@ -46,8 +46,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          name: node-app
+          path: "./src/Client/build/"
           if-no-files-found: error
 
   deploy:
@@ -61,7 +61,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
+          name: node-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -69,5 +69,5 @@ jobs:
         with:
           app-name: 'ClubAppReactClientStage'
           slot-name: 'production'
-          publish-profile: ${{ secrets.ClubAppReactClientStage }}
+          publish-profile: ${{ secrets.CLUBAPPREACTCLIENTSTAGE_FFFF }}
           package: .

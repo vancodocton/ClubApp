@@ -1,5 +1,4 @@
-using ClubApp.Backend.Data;
-using ClubApp.Backend.Models;
+using ClubApp.Backend.Infrastructure.Identity;
 using ClubApp.Backend.Options;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -15,9 +14,20 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+string dbProvider = builder.Configuration.GetValue("DatabaseProvider", "Sqlite")
+    ?? throw new ArgumentNullException(nameof(dbProvider), "Database provider is not configured.");
+
+builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+{
+    _ = dbProvider switch
+    {
+        "Sqlite" => options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection"),
+            x => x.MigrationsAssembly("Backend.Infrastructure.Sqlite")),
+        "Postgre" => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection"),
+            x => x.MigrationsAssembly("Backend.Infrastructure.Postgre")),
+        _ => throw new Exception($"Unsupported database provider: {dbProvider}")
+    };
+});
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -26,14 +36,14 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Stores.MaxLengthForKeys = 128;
 })
     .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultUI();
 
 IdentityServerConfig.ReactClientOrigins = builder.Configuration.GetSection("Origins:ReactClient").Get<string[]>()
     ?? throw new ArgumentNullException("reactClientDomain", "React Client Origin is null");
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
+    .AddApiAuthorization<ApplicationUser, AppIdentityDbContext>(options =>
     {
         options.Clients.AddRange(IdentityServerConfig.Clients.ToArray());
     });
@@ -54,13 +64,11 @@ else
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    if (app.Environment.IsStaging())
+    if (app.Environment.IsDevelopment())
     {
-        using (var context = app.Services.CreateScope()
-            .ServiceProvider.GetService<ApplicationDbContext>())
-        {
-            context?.Database.Migrate();
-        }
+        using var context = app.Services.CreateScope().ServiceProvider
+            .GetRequiredService<AppIdentityDbContext>();
+        context.Database.Migrate();
     }
 }
 

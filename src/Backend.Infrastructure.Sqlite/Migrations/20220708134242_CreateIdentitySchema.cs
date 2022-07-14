@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ClubApp.Application.Data.Migrations
+#nullable disable
+
+namespace ClubApp.Backend.Infrastructure.Sqlite.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
@@ -57,7 +60,7 @@ namespace ClubApp.Application.Data.Migrations
                     Description = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
                     CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Expiration = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 52720, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,11 +74,11 @@ namespace ClubApp.Application.Data.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Version = table.Column<int>(type: "INTEGER", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Use = table.Column<string>(type: "TEXT", maxLength: 450, nullable: true),
+                    Use = table.Column<string>(type: "TEXT", nullable: true),
                     Algorithm = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     IsX509Certificate = table.Column<bool>(type: "INTEGER", nullable: false),
                     DataProtected = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 52720, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,7 +98,7 @@ namespace ClubApp.Application.Data.Migrations
                     CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Expiration = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ConsumedTime = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 52720, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
                 constraints: table =>
                 {
