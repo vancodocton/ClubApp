@@ -11,19 +11,17 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Client", "src\Client\Client
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{7E89ED0B-98E7-4111-82D4-A33B6F3FE83B}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\azure-static-web-apps-icy-tree-019f2b100.yml = .github\workflows\azure-static-web-apps-icy-tree-019f2b100.yml
-		.github\workflows\ClubApp.Backend.Stage.Linux.yml = .github\workflows\ClubApp.Backend.Stage.Linux.yml
-		.github\workflows\ClubApp.Backend.Stagging.yml = .github\workflows\ClubApp.Backend.Stagging.yml
-		.github\workflows\ClubApp.Frontend.Stage.Linux.yml = .github\workflows\ClubApp.Frontend.Stage.Linux.yml
+		.github\workflows\ClubApp.Frontend.Linux.yml = .github\workflows\ClubApp.Frontend.Linux.yml
+		.github\workflows\ClubApp.Backend.Linux.yml = .github\workflows\ClubApp.Backend.Linux.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5AD11ABE-E8EA-4B6F-91C3-0D0B276BBB01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infrastructure", "src\Backend.Infrastructure\Backend.Infrastructure.csproj", "{63235E3B-1C66-4FBE-B968-3C72B481138D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infrastructure", "src\Backend.Infrastructure\Backend.Infrastructure.csproj", "{63235E3B-1C66-4FBE-B968-3C72B481138D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infrastructure.Sqlite", "src\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj", "{BEBE52D4-CF77-44BF-BCF4-D073CB846BF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infrastructure.Postgre", "src\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj", "{160050F6-A248-4610-A1CD-DB48F310A50E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infrastructure.Postgre", "src\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj", "{160050F6-A248-4610-A1CD-DB48F310A50E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

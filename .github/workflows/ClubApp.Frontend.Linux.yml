@@ -1,6 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
-name: Build and deploy Frontend React Client on Node.js Linux
+name: Frontend - Build and deploy to Azure Linux
 
 defaults:
   run:
@@ -9,10 +9,11 @@ defaults:
 on:
   push:
     branches:
+    - main
     - stage
     paths:
     - src/Client/**
-    - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
+    - .github/workflows/ClubApp.Frontend.Linux.yml
   pull_request:
     types:
     - ready_for_review
@@ -23,6 +24,9 @@ on:
     paths:
     - src/Client/**
     - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
+    branches:
+    - main
+    - stage
   workflow_dispatch:
 
 jobs:

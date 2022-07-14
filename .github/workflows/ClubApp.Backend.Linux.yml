@@ -1,7 +1,8 @@
-name: Build and deploy Backend on Linux
+name: Backend - Build and deploy to Azure Linux
 on:
   push:
     branches:
+    - main
     - stage
     paths:
     - src/Backend/**
@@ -14,7 +15,10 @@ on:
     - reopened
     paths:
     - src/Backend/**
-    - .github/workflows/ClubApp.Backend.Stage.Linux.yml
+    - .github/workflows/ClubApp.Backend.Linux.yml
+    branches:
+    - main
+    - stage
   workflow_dispatch:
 
 env:
@@ -46,8 +50,9 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.ClubAppBackendStage_FFFF }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        slot-name: production
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
         name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}        
