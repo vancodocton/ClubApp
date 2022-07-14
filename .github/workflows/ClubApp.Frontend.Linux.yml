@@ -66,6 +66,7 @@ jobs:
           name: ClubApp.Client.React
           path: ${{ env.WORKING_DIRECTORY }}/build
 
+# https://github.com/Azure/webapps-deploy#github-action-for-deploying-to-azure-web-app
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -74,4 +75,5 @@ jobs:
           publish-profile: ${{ secrets.ClubApp_ClientReact_FFFF }}
           package: ${{ env.WORKING_DIRECTORY }}/build
           #The slot shoudld be Staging. However, it's not enough budget to Standard App Service Plan for mulitple deployment slot.
-          #slot-name: Staging 
+          #slot-name: Staging
+          startup-command: pm2 serve /home/site/wwwroot --no-daemon --spa
