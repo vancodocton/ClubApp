@@ -13,13 +13,12 @@ on:
   pull_request:
     types:
     - ready_for_review
-    - ready_for_review
     - opened
     - synchronize
     - reopened
     paths:
     - src/Client/**
-    - .github/workflows/ClubApp.Frontend.Stage.Linux.yml
+    - .github/workflows/ClubApp.Frontend.Linux.yml
     branches:
     - main
     - stage
