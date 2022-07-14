@@ -75,5 +75,4 @@ jobs:
           publish-profile: ${{ secrets.ClubApp_ClientReact_FFFF }}
           package: ${{ env.WORKING_DIRECTORY }}/build
           #The slot shoudld be Staging. However, it's not enough budget to Standard App Service Plan for mulitple deployment slot.
-          #slot-name: Staging
-          startup-command: pm2 serve /home/site/wwwroot --no-daemon --spa
+          #slot-name: Staging 
