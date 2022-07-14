@@ -13,9 +13,6 @@ on:
   pull_request:
     types:
     - ready_for_review
-    - opened
-    - synchronize
-    - reopened
     paths:
     - src/Client/**
     - .github/workflows/ClubApp.Frontend.Linux.yml
