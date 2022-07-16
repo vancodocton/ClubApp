@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets",
-      "connectionId": null
-    },
     "sqlite1": {
       "type": "sqlite",
       "connectionId": "ConnectionStrings:SqliteConnection",
@@ -12,6 +8,14 @@
     "appInsights1": {
       "type": "appInsights",
       "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": null
+    },
+    "postgresql1": {
+      "type": "postgresql",
+      "connectionId": "ConnectionStrings:PostgreConnection"
     }
   }
 }

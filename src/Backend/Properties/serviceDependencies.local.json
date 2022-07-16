@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "secrets1": {
-      "secretStore": null,
-      "resourceId": null,
-      "type": "secrets.user",
-      "connectionId": null
-    },
     "sqlite1": {
       "secretStore": null,
       "type": "sqlite.local",
@@ -14,6 +8,21 @@
     },
     "appInsights1": {
       "type": "appInsights.sdk"
+    },
+    "secrets1": {
+      "secretStore": null,
+      "resourceId": null,
+      "type": "secrets.user",
+      "connectionId": null
+    },
+    "postgresql1": {
+      "containerPorts": "40001:5432",
+      "secretStore": null,
+      "containerName": "postgresql",
+      "containerImage": "postgres",
+      "resourceId": null,
+      "type": "postgresql.container",
+      "connectionId": "ConnectionStrings:PostgreConnection"
     }
   }
 }
