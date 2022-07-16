@@ -11,6 +11,8 @@ on:
   pull_request:
     types:
     - ready_for_review
+    - opened
+    - synchronize
     paths:
     - src/Backend/**
     - .github/workflows/ClubApp.Backend.Linux.yml

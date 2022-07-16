@@ -1,15 +1,28 @@
 {
   "dependencies": {
-    "appInsights1": {
-      "type": "appInsights.sdk",
-      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-      "dynamicId": null
-    },
     "sqlite1": {
-      "secretStore": "LocalSecretsFile",
+      "secretStore": null,
       "type": "sqlite.local",
       "connectionId": "ConnectionStrings:SqliteConnection",
       "dynamicId": null
+    },
+    "appInsights1": {
+      "type": "appInsights.sdk"
+    },
+    "secrets1": {
+      "secretStore": null,
+      "resourceId": null,
+      "type": "secrets.user",
+      "connectionId": null
+    },
+    "postgresql1": {
+      "containerPorts": "40001:5432",
+      "secretStore": null,
+      "containerName": "postgresql",
+      "containerImage": "postgres",
+      "resourceId": null,
+      "type": "postgresql.container",
+      "connectionId": "ConnectionStrings:PostgreConnection"
     }
   }
 }

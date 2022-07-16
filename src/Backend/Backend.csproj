@@ -10,19 +10,19 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.6" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj" />
-	  <ProjectReference Include="..\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj" />
-	  <ProjectReference Include="..\Backend.Infrastructure\Backend.Infrastructure.csproj" />
+		<ProjectReference Include="..\Backend.Infrastructure.Postgre\Backend.Infrastructure.Postgre.csproj" />
+		<ProjectReference Include="..\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj" />
+		<ProjectReference Include="..\Backend.Infrastructure\Backend.Infrastructure.csproj" />
 	</ItemGroup>
-	
+
 </Project>
