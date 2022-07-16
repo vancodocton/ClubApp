@@ -14,7 +14,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;"
       },
       "applicationUrl": "https://localhost:8000",
       "dotnetRunMessages": true
@@ -22,7 +23,7 @@
     "ClubApp.Backend Staging": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "Identity/Account/Manage",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Staging"
       },
@@ -31,7 +32,6 @@
     },
     "ClubApp.Backend Production": {
       "commandName": "Project",
-      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
