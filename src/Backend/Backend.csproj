@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>ClubApp.Backend</RootNamespace>
 		<UserSecretsId>42b9100f-28ba-42ff-93e2-f01d1ecd4675</UserSecretsId>
+		<ResolveStaticWebAssetsInputsDependsOn>RemoveIdentityAssets</ResolveStaticWebAssetsInputsDependsOn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,6 +18,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
 		<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.2" />
 	</ItemGroup>
@@ -26,5 +28,11 @@
 		<ProjectReference Include="..\Backend.Infrastructure.Sqlite\Backend.Infrastructure.Sqlite.csproj" />
 		<ProjectReference Include="..\Backend.Infrastructure\Backend.Infrastructure.csproj" />
 	</ItemGroup>
+
+	<Target Name="RemoveIdentityAssets">
+		<ItemGroup>
+			<StaticWebAsset Remove="@(StaticWebAsset)" Condition="%(SourceId) == 'Microsoft.AspNetCore.Identity.UI'" />
+		</ItemGroup>
+	</Target>
 
 </Project>
