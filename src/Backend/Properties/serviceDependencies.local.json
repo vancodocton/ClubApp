@@ -1,15 +1,19 @@
 {
   "dependencies": {
-    "appInsights1": {
-      "type": "appInsights.sdk",
-      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-      "dynamicId": null
+    "secrets1": {
+      "secretStore": null,
+      "resourceId": null,
+      "type": "secrets.user",
+      "connectionId": null
     },
     "sqlite1": {
-      "secretStore": "LocalSecretsFile",
+      "secretStore": null,
       "type": "sqlite.local",
       "connectionId": "ConnectionStrings:SqliteConnection",
       "dynamicId": null
+    },
+    "appInsights1": {
+      "type": "appInsights.sdk"
     }
   }
 }

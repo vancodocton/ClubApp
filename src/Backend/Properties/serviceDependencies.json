@@ -1,14 +1,17 @@
 {
   "dependencies": {
-    "appInsights1": {
-      "type": "appInsights",
-      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-      "dynamicId": null
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": null
     },
     "sqlite1": {
       "type": "sqlite",
       "connectionId": "ConnectionStrings:SqliteConnection",
       "dynamicId": null
+    },
+    "appInsights1": {
+      "type": "appInsights",
+      "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING"
     }
   }
 }
