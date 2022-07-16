@@ -10,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+}
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,7 +33,6 @@ builder.Services.AddDbContext<AppIdentityDbContext>(options =>
         _ => throw new Exception($"Unsupported database provider: {dbProvider}")
     };
 });
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
@@ -56,13 +60,14 @@ builder.Services.AddApplicationInsightsTelemetry();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseSwagger();
+
 if (app.Environment.IsProduction())
 {
     app.UseExceptionHandler("/Error");
 }
 else
 {
-    app.UseSwagger();
     app.UseSwaggerUI();
 
     if (app.Environment.IsDevelopment())
@@ -85,7 +90,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 app.MapRazorPages();
-
-app.MapFallbackToFile("index.html"); ;
 
 app.Run();
