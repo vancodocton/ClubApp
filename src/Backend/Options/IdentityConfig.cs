@@ -15,6 +15,13 @@ namespace ClubApp.Backend.Options
             .WithCorsOrigins(ReactClientOrigins)
             .AllowOfflineAccess()
             .Build(),
+            ClientBuilder.SPA("ClubAppOidc")
+            .WithRedirectUris("/.auth/login/oidc/callback", ReactClientOrigins)
+            .WithLogoutRedirectUris("/authentication/logout-callback", ReactClientOrigins)
+            .WithCorsOrigins(ReactClientOrigins)
+            .WithClientSecret("secret".Sha256())
+            .AllowOfflineAccess()
+            .Build(),
         };
     }
 }
